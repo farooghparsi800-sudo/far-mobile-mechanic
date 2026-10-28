@@ -1,42 +1,25 @@
-import { useEffect } from "react";
-import Lenis from "lenis";
-import "lenis/dist/lenis.css";
-import "@/App.css";
-import { Toaster } from "sonner";
-import { Header } from "@/components/site/Header";
-import { Hero } from "@/components/site/Hero";
-import { Marquee } from "@/components/site/Marquee";
-import { Services } from "@/components/site/Services";
-import { Pricing } from "@/components/site/Pricing";
-import { Process } from "@/components/site/Process";
-import { Booking } from "@/components/site/Booking";
-import { Footer } from "@/components/site/Footer";
-import { MobileBar } from "@/components/site/MobileBar";
+import React from 'react';
+import { Header } from './components/site/Header';
+import { Hero } from './components/site/Hero';
+import { Marquee } from './components/site/Marquee';
+import { Services } from './components/site/Services';
+import { Process } from './components/site/Process';
+import { Booking } from './components/site/Booking';
 
 function App() {
-  useEffect(() => {
-    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
-    window.__lenis = lenis;
-    let id;
-    const raf = (t) => { lenis.raf(t); id = requestAnimationFrame(raf); };
-    id = requestAnimationFrame(raf);
-    return () => { cancelAnimationFrame(id); lenis.destroy(); window.__lenis = null; };
-  }, []);
-
   return (
-    <div className="grain min-h-screen bg-[#0B0C0E] text-[#F9FAFB]">
+    <div className="min-h-screen bg-[#0B0C0E] text-[#F9FAFB] font-sans selection:bg-[#FF5500] selection:text-white">
       <Header />
       <main>
         <Hero />
         <Marquee />
         <Services />
-        <Pricing />
         <Process />
         <Booking />
       </main>
-      <Footer />
-      <MobileBar />
-      <Toaster theme="dark" position="top-center" />
+      <footer className="py-8 border-t border-white/10 text-center font-mono text-xs text-white/40">
+        <p>&copy; {new Date().getFullYear()} F.A.R Mobile Mechanic. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
