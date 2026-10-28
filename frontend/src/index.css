@@ -3,29 +3,26 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 10 12 14;
-    --foreground: 249 250 251;
+  body {
+    @apply bg-[#0B0C0E] text-[#F9FAFB] antialiased;
   }
 }
 
-body {
-  background-color: #0B0C0E;
-  color: #F9FAFB;
-  overflow-x: hidden;
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
-::-webkit-scrollbar-track {
-  background: #0B0C0E;
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#ff661a] text-[#0B0C0E] font-mono font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-sm transition-all shadow-lg shadow-[#FF5500]/20 hover:scale-[1.02] active:scale-[0.98];
 }
-::-webkit-scrollbar-thumb {
-  background: #27272A;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #FF5500;
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-mono text-sm uppercase tracking-wider px-6 py-3 rounded-sm transition-all hover:border-white/30;
 }
